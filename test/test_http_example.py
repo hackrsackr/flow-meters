@@ -5,7 +5,7 @@ Checks whether we can call the hello endpoint.
 import pytest
 from brewblox_service.testing import response
 
-from YOUR_PACKAGE import http_example
+from flow_meters.examples import http_example
 
 
 @pytest.fixture

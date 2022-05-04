@@ -6,12 +6,11 @@ from argparse import ArgumentParser
 
 from brewblox_service import brewblox_logger, http, mqtt, scheduler, service
 
-from YOUR_PACKAGE import http_example, publish_example, subscribe_example
-
+from flow_meters.examples import http_example, publish_example, subscribe_example
 LOGGER = brewblox_logger(__name__)
 
 
-def create_parser(default_name='YOUR_PACKAGE') -> ArgumentParser:
+def create_parser(default_name='flow_meters') -> ArgumentParser:
     # brewblox-service has some default arguments
     # We can add more arguments here before sending the parser back to brewblox-service
     # The parsed values for all arguments are placed in app['config']

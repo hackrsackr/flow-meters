@@ -7,7 +7,7 @@ from unittest.mock import AsyncMock
 import pytest
 from brewblox_service.testing import matching
 
-from YOUR_PACKAGE import subscribe_example
+from flow_meters.examples import subscribe_example
 
 TESTED = subscribe_example.__name__
 
@@ -18,7 +18,6 @@ def m_mqtt(mocker):
     We don't want to create and connect to a MQTT broker here.
     That takes too long, and is too fragile.
     We'll just mock the used mqtt functions, and assert they are called as expected.
-
     Set `autouse=True` if you want all tests and fixtures to use this mock.
     """
     m = mocker.patch(TESTED + '.mqtt')
@@ -38,7 +37,6 @@ def app(app):
     This overrides the fixture defined in conftest.py.
     We can depend on the original fixture and modify its result.
     All other tests and fixtures that depend on `app` will use the modified result.
-
     We only call the setup() function for the features we are testing,
     and their dependencies.
     """
@@ -51,7 +49,6 @@ async def test_feature_startup(app, client, m_mqtt):
     This test depends on both the `app`, and `client` fixtures.
     The setup() function was called in the `app` fixture,
     and the `client` fixture started the app.
-
     `SubscribingFeature.startup(app)` will have been called.
     """
     feature = subscribe_example.fget(app)
@@ -77,7 +74,6 @@ async def test_feature_shutdown(app, client, m_mqtt):
     This test depends on both the `app`, and `client` fixtures.
     The setup() function was called in the `app` fixture,
     and the `client` fixture started the app.
-
     `SubscribingFeature.startup(app)` will have been called.
     """
     feature = subscribe_example.fget(app)
